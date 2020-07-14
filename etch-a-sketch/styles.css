@@ -1,0 +1,37 @@
+:root {
+    --grid-cols: 1;
+    --grid-rows: 1;
+  }
+  
+#container {
+    display: grid;
+    /* grid-gap: 1em; */
+    grid-template-rows: repeat(var(--grid-rows), 1fr);
+    grid-template-columns: repeat(var(--grid-cols), 1fr);
+}
+  
+.grid-item {
+    padding: 1em;
+    border: 1px solid rgb(0, 0, 0);
+    text-align: center;
+    /* background-color: rgb(var(--red), var(--green), var(--blue)); */
+    background-color:red ;
+}
+
+/* .grid-item:hover {
+    background-color: rgb(--red, --green, --blue);
+} */
+
+.button {
+    transition-duration: 0.4s;
+    margin-bottom: 10px;
+    font-size: 16px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50; /* Green */
+}
+  
+.button:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+}
