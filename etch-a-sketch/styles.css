@@ -15,7 +15,7 @@
     border: 1px solid rgb(0, 0, 0);
     text-align: center;
     /* background-color: rgb(var(--red), var(--green), var(--blue)); */
-    background-color:red ;
+    background-color:hsl(0, 0%, 100%) ;
 }
 
 /* .grid-item:hover {
