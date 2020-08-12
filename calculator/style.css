@@ -19,7 +19,9 @@
 
 .output p {
     margin: auto;
+    margin-right: 10px;
     font-size: 50px;
+    text-align: right;
 }
 
 .input {
