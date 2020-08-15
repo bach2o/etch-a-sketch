@@ -6,6 +6,10 @@ function subtract (a, b) {
 	return a - b;
 }
 
+function division (a, b) {
+	return a / b;
+}
+ 
 function sum (array) {
 	let arrayLength = array.length;
 	let sum = 0;
@@ -36,5 +40,17 @@ function factorial(n) {
 		return 1;
 	} else {
 		return n * factorial(n - 1);
+	}
+}
+
+function operate(a, b, op) {
+	if (op == "+") {
+		return add(a, b);
+	} else if (op == "-") {
+		return subtract(a, b);
+	} else if (op == "x") {
+		return multiply(a, b);
+	} else if (op == "/") {
+		return division(a, b);
 	}
 }
