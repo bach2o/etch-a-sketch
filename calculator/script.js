@@ -54,3 +54,9 @@ function operate(a, b, op) {
 		return division(a, b);
 	}
 }
+
+var x = document.getElementById('seven');
+x.addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "7";
+}
+);
