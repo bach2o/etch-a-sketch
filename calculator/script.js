@@ -55,8 +55,115 @@ function operate(a, b, op) {
 	}
 }
 
-var x = document.getElementById('seven');
-x.addEventListener("click", function() {
+var buttonObject = {"leftParenthesis": "(", "rightParenthesis": ")", "percentage": "%", "clear": "AC", 
+	"zero": 0, "one": 1, "two": 2, "three": 3, "four": 4, "five": 5, "six": 6, "seven": 7, "eight": 8, "nine": 9};
+	
+document.getElementById('leftParenthesis').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "(";
+});	
+document.getElementById('rightParenthesis').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += ")";
+});
+document.getElementById('seven').addEventListener("click", function() {
 	document.getElementById("outputP").innerHTML += "7";
+});
+document.getElementById('one').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "1";
+});
+document.getElementById('zero').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "0";
+});
+document.getElementById('two').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "2";
+});
+document.getElementById('three').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "3";
+});
+document.getElementById('four').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "4";
+});
+document.getElementById('five').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "5";
+});
+document.getElementById('six').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "6";
+});
+document.getElementById('eight').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "8";
+});
+document.getElementById('nine').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += "9";
+});
+document.getElementById('sum').addEventListener("click", function() {
+	let x = document.getElementById("outputP").innerHTML.split('');
+	let i;
+	if (x[length] == "-" || x[length] == "x" || x[length] == "÷") {
+		x[length] = "+";
+		x.join('');
+		document.getElementById("outputP").innerHTML = x;
+	} else {
+		document.getElementById("outputP").innerHTML += "+";
+	}	
+});
+document.getElementById('minus').addEventListener("click", function() {
+	let x = document.getElementById("outputP").innerHTML.split('');
+	let i;
+	if (x[length] == "+" || x[length] == "x" || x[length] == "÷") {
+		x[length] = "-";
+		x.join('');
+		document.getElementById("outputP").innerHTML = x;
+	} else {
+		document.getElementById("outputP").innerHTML += "-";
+	}	
+});
+document.getElementById('multiplication').addEventListener("click", function() {
+	let x = document.getElementById("outputP").innerHTML.split('');
+	let i;
+	if (x[length] == "-" || x[length] == "+" || x[length] == "÷") {
+		x[length] = "x";
+		x.join('');
+		document.getElementById("outputP").innerHTML = x;
+	} else {
+		document.getElementById("outputP").innerHTML += "x";
+	}	
+});
+document.getElementById('division').addEventListener("click", function() {
+	let x = document.getElementById("outputP").innerHTML.split('');
+	let i;
+	if (x[length] == "-" || x[length] == "x" || x[length] == "+") {
+		x[length] = "÷";
+		x.join('');
+		document.getElementById("outputP").innerHTML = x;
+	} else {
+		document.getElementById("outputP").innerHTML += "÷";
+	}	
+});
+
+
+document.getElementById('clear').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML = "";
+});
+
+document.getElementById('equal').addEventListener("click", function() {
+	let x = document.getElementById("outputP").innerHTML.split('');
+	let i;
+	for (i = 0; i < x.length; i++) {
+		if (x[i] == "÷") {
+			document.getElementById("outputP").innerHTML = division(x[i-1], x[i+1]);
+		} 
+		
+	}
+});
+
+
+function truncateText(selector, maxLength) {
+    var element = document.querySelector(selector),
+        truncated = element.innerText;
+
+    if (truncated.length > maxLength) {
+        truncated = truncated.substr(0,maxLength) + '...';
+    }
+    return truncated;
 }
-);
+
+// document.getElementById('outputParent').innerText = truncateText('p', 110)

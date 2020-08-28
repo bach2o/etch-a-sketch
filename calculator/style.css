@@ -10,6 +10,11 @@ body {
     border: 10px ridge rgba(170, 50, 220, .6);
 }
 
+
+#outputP:empty:not(:focus)::before {
+    content: attr(data-placeholder);
+  }
+
 .calculatorcontent {
     margin: 15px;
     /* width: 570px; */
