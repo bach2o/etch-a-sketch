@@ -95,49 +95,23 @@ document.getElementById('nine').addEventListener("click", function() {
 	document.getElementById("outputP").innerHTML += "9";
 });
 document.getElementById('sum').addEventListener("click", function() {
-	let x = document.getElementById("outputP").innerHTML.split('');
-	let i;
-	if (x[length] == "-" || x[length] == "x" || x[length] == "÷") {
-		x[length] = "+";
-		x.join('');
-		document.getElementById("outputP").innerHTML = x;
-	} else {
-		document.getElementById("outputP").innerHTML += "+";
-	}	
+	document.getElementById("outputP").innerHTML += "+";
 });
 document.getElementById('minus').addEventListener("click", function() {
-	let x = document.getElementById("outputP").innerHTML.split('');
-	let i;
-	if (x[length] == "+" || x[length] == "x" || x[length] == "÷") {
-		x[length] = "-";
-		x.join('');
-		document.getElementById("outputP").innerHTML = x;
-	} else {
-		document.getElementById("outputP").innerHTML += "-";
-	}	
+	document.getElementById("outputP").innerHTML += "-";
 });
 document.getElementById('multiplication').addEventListener("click", function() {
-	let x = document.getElementById("outputP").innerHTML.split('');
-	let i;
-	if (x[length] == "-" || x[length] == "+" || x[length] == "÷") {
-		x[length] = "x";
-		x.join('');
-		document.getElementById("outputP").innerHTML = x;
-	} else {
-		document.getElementById("outputP").innerHTML += "x";
-	}	
+	document.getElementById("outputP").innerHTML += "x";
+	
 });
 document.getElementById('division').addEventListener("click", function() {
-	let x = document.getElementById("outputP").innerHTML.split('');
-	let i;
-	if (x[length] == "-" || x[length] == "x" || x[length] == "+") {
-		x[length] = "÷";
-		x.join('');
-		document.getElementById("outputP").innerHTML = x;
-	} else {
-		document.getElementById("outputP").innerHTML += "÷";
-	}	
+	document.getElementById("outputP").innerHTML += "÷";
 });
+
+document.getElementById('point').addEventListener("click", function() {
+	document.getElementById("outputP").innerHTML += ".";
+});
+
 
 
 document.getElementById('clear').addEventListener("click", function() {
@@ -145,13 +119,35 @@ document.getElementById('clear').addEventListener("click", function() {
 });
 
 document.getElementById('equal').addEventListener("click", function() {
-	let x = document.getElementById("outputP").innerHTML.split('');
+	let input = document.getElementById("outputP").innerHTML.split('');
 	let i;
-	for (i = 0; i < x.length; i++) {
-		if (x[i] == "÷") {
-			document.getElementById("outputP").innerHTML = division(x[i-1], x[i+1]);
+	
+	let refinedInput = [];
+	for (i = 0; i < input.length; i++) {
+		if (input[i] == "÷" || input[i] == "-" || input[i] == "x" || input[i] == "+") {
+			let x = '';
+			for (let k = 0; k < i; k++) {
+				x += input[k];
+			}
+			Number(x);
+			console.log(x);
+			refinedInput.push(x);
+			refinedInput.push(input[i]);
+			input = input.slice(i+1);			
+			i = 0;
 		} 
-		
+	}
+	let x = '';
+	for (i = 0; i < input.length; i++) {
+		x += input[i];
+	}
+	Number(x);
+	refinedInput.push(x);	
+	console.log(refinedInput);
+	for (i = 0; i < refinedInput.length; i++) {
+		if (refinedInput[i] == "÷") {
+			let x = division(refinedInput[i - 1], refinedInput[i + 1]);
+	}
 	}
 });
 
