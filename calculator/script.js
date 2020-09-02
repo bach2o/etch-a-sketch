@@ -1,5 +1,6 @@
 function add (a, b) {
-	return a + b;
+	let x = Number(a) + Number(b);
+	return x;
 }
 
 function subtract (a, b) {
@@ -19,12 +20,8 @@ function sum (array) {
 	return sum;
 }
 
-function multiply (array) {	
-	let product = 1;
-	for (i = 0; i < array.length; i++) {
-		product *= array[i];
-	}
-	return product;
+function multiply (a, b) {	
+	return a * b;
 }
 
 function power(base, power) {
@@ -145,9 +142,18 @@ document.getElementById('equal').addEventListener("click", function() {
 	refinedInput.push(x);	
 	console.log(refinedInput);
 	for (i = 0; i < refinedInput.length; i++) {
-		if (refinedInput[i] == "÷") {
-			let x = division(refinedInput[i - 1], refinedInput[i + 1]);
-	}
+		if (refinedInput[i] == "÷") { 
+			document.getElementById("outputP").innerHTML = division(refinedInput[i - 1], refinedInput[i + 1]);
+		}
+		if (refinedInput[i] == "x") {
+			document.getElementById("outputP").innerHTML = multiply(refinedInput[i - 1], refinedInput[i + 1]);
+		}
+		if (refinedInput[i] == "-") {
+			document.getElementById("outputP").innerHTML = subtract(refinedInput[i - 1], refinedInput[i + 1]);
+		}
+		if (refinedInput[i] == "+") {
+			document.getElementById("outputP").innerHTML = add(refinedInput[i - 1], refinedInput[i + 1]);
+		}
 	}
 });
 
